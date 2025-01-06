@@ -1,0 +1,33 @@
+{
+    "manifest_version" : 3, 
+    "name" : "Unlitter",
+    "version" : "0.1",
+    "description" : "Unlitter is a chrome extension that intentionally filters out AI generated content from your browser.",
+    "permissions" : [
+        "activeTab",
+        "scripting",
+        "storage",
+        "webRequest"
+    ],
+    "host_permissions" : [
+        "https://localhost:3000/*",
+        "http://localhost:3000/*"   
+    ],
+    "background" : {
+        "service_worker" : "background.js"
+    },
+    "content_scripts" : [
+        {
+            "matches" : ["https://www.google.com/search*"],
+            "js" : ["content.js"]
+        }
+    ],
+    "action" : {
+        "default_popup": "popup.html", 
+        "default_icon" : {
+            "16" : "icon.png",
+            "48" : "icon.png",
+            "128" : "icon.png"
+        }
+    }
+}
